@@ -6,15 +6,49 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Hexo</title>
+  <title>java基础 IO流 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="缓冲流缓冲流概述缓冲流也称为高效流，或者高级流。之前学习的字节流可以成为原始流。见该文章: Java基础 file､方法递、IO流作用：缓冲流自带缓冲区，可以提高原始字节流，字符流写数据的性能。  BufferedInputSream          字节缓冲输入流BufferedOutputSream       字节缓冲输出流BufferedReader                 字符">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java基础 IO流">
+<meta property="og:url" content="http://example.com/2022/03/18/java%E5%9F%BA%E7%A1%80%20IO%E6%B5%81/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="缓冲流缓冲流概述缓冲流也称为高效流，或者高级流。之前学习的字节流可以成为原始流。见该文章: Java基础 file､方法递、IO流作用：缓冲流自带缓冲区，可以提高原始字节流，字符流写数据的性能。  BufferedInputSream          字节缓冲输入流BufferedOutputSream       字节缓冲输出流BufferedReader                 字符">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/515a8c0cc1c149d88f405ebe4530f4ae.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/c6ae4af071a44132bd0b29107cf43a77.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/968870add7804c61abce46fdb31d3e37.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/52fd386bae8345758b8a8e6efd7b049f.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/3508d332c14d4535a9d5dade85d39352.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2e0de8e4fe284a4993e626bf620c1c44.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/dc9fc698e4e14b78bf2c4c685cfce177.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/fecb04d761fd44bca72c09deb73c4649.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/0afff9795f0245f7a586e4c617ac13b8.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/d13b32d7081a4f53a21a47a185b7b1e5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/59a28f4ae6eb48e5a88ba40ed7933995.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/fcd296b026b7442db63437ddd636293f.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/0e8a5a3da2314752bb630f69131a3266.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/fd07d626c139496b988f246073ac868a.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/8abac452c30e4b81ae1f776b0289d712.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/59fdc65300174eb09a0b34425d0c3330.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2d2eb2d4deac4e74bf868bf73f18cad5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/3e7df594495343c49bbca9b84238250d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/85df0e381c9342ee9b16236bba13c9bb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/67f0c84b7ef54decb38fd9069fafe136.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/73f0afe8c3454a53923df615ba194d13.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/c6e6da04656b400f88147deb37281f1d.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/db091b5a15a74735b7a7ad1a5e3d6f04.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/31e0d0c6a5644fba83c333a7602b191e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/12cbaab6c4554d6f8df8ccd968f9a296.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/ea82e54e83b94fa182adbcc94d190801.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/d5ba01509c0846af950bc4e531153147.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/1df18cba1d5b44358edc4877584e6947.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/1d342984c22d4c1da96b8c7d48d86345.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_18,color_FFFFFF,t_70,g_se,x_16">
+<meta property="article:published_time" content="2022-03-18T01:14:54.076Z">
+<meta property="article:modified_time" content="2022-03-16T16:09:28.532Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/515a8c0cc1c149d88f405ebe4530f4ae.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,322 +184,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-SQL语句" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-java基础 IO流" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/18/SQL%E8%AF%AD%E5%8F%A5/">SQL语句</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/18/SQL%E8%AF%AD%E5%8F%A5/" class="archive-article-date">
-  	<time datetime="2022-03-18T01:14:54.089Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="SQL通用语法"><a href="#SQL通用语法" class="headerlink" title="SQL通用语法"></a>SQL通用语法</h1><p>1.SQL语句可以当行书写或多行书写，以分号结尾<br>2.MySQL数据库的SQL语句不区分大小写，关键字建议使用大写<br>3.注释：<br>     单行注释：– 注释内容或 #注释内容（MySQL特有）<br>     多行注释：&#x2F;* 注释*&#x2F;</p>
-<h1 id="SQL分类"><a href="#SQL分类" class="headerlink" title="SQL分类"></a>SQL分类</h1><p>1.DDL：操作数据库，表等<br>2.DML：对表中的数据进行增删改操作<br>3.DQL：对表中数据进行查询<br>4.DCL：对数据库进行权限控制</p>
-<h1 id="DDL–操作数据库"><a href="#DDL–操作数据库" class="headerlink" title="DDL–操作数据库"></a>DDL–操作数据库</h1><p>1.查询</p>
-<blockquote>
-<p>SHOW DATABASES;<br>2.创建<br>    创建数据库<br>CREATE DATABASE 数据库名称;</p>
-</blockquote>
-<pre><code>创建数据库（判断，如果不存在则创建）
-&gt;CREATE DATABASE IF NOT EXISTS 数据库名称；
-</code></pre>
-<p>3.删除<br>    删除数据库<br>    &gt;DROP DATABASE;</p>
-<pre><code>删除数据库（判断，如果存在则删除）
-&gt;DROP DATABASE IF EXISES 数据库名称;
-</code></pre>
-<p>4.使用数据库<br>    查看当前使用的数据库<br>    &gt;SELECT DATABASE();</p>
-<pre><code> 使用数据库
- &gt;USE 数据库名称;
-</code></pre>
-<h1 id="DDL–操作表"><a href="#DDL–操作表" class="headerlink" title="DDL–操作表"></a>DDL–操作表</h1><p>1.查询表<br>     查询当前数据库下的所有表名称：<br>    &gt;SHOW  TABLES;</p>
-<pre><code>查询表结构：
-&gt;DESC 表名称;
-</code></pre>
-<p>2.创建表<br>    &gt;CREATE TABLE 表名（<br>          字段名1  数据类型1，<br>          字段名2  数据类型2，<br>          ……<br>          字段名n  数据类型n<br>    );<br>    <strong>注意：最后一行末尾，不能加逗号</strong></p>
-<pre><code>MySQL支持多种数据类型，可分为三类：
-</code></pre>
-<p> <img src="https://img-blog.csdnimg.cn/7b349d265f75431eb4c3321a28b5006b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>3.删除表<br>    删除表<br>    &gt;DROP TABLE 表名;</p>
-<pre><code>删除表时判断表是否存在
-&gt;DROP TABLE IF EXISTS 表名;
-</code></pre>
-<p>4.修改表<br>    修改表名<br>    &gt;ALTER TABLE 表名 RENAME  TO 新表名;</p>
-<pre><code>添加一列
-&gt;ALTER TABLE 表名 ADD 列名 数据类型;
-
-修改数据类型
-&gt;ALTER TABLE 表名 MODIFY 列名 数据类型;
-
-修改列名和数据类型
-&gt;ALTER TABLE 表名 CHANGE 列名 新列名 新数据类型;
-
-删除列
-&gt;ALTER TABLE 表名 DROP 列名;
-</code></pre>
-<h1 id="DML"><a href="#DML" class="headerlink" title="DML"></a>DML</h1><p>1.添加<br>    1.1 给指定的列添加数据<br>    &gt;INSERT INTO 表名（列名1，列名2，…） VALUES(值1，值2，…);</p>
-<pre><code>1.2 给全部列添加数据
-&gt;INSERT INTO 表名 VALUES(值1，值2...);
-
-1.3 批量添加
-&gt;INSERT INTO 表名（列名1，列名2，...）VALUES(值1，值2，...)，（值1，值2，...），（值1，值2，...）...;
-</code></pre>
-<blockquote>
-<p>INSERT INTO 表名 VALUES（值1，值2，…），（值1，值2，…）…;</p>
-</blockquote>
-<p>2.修改数据<br>    &gt;UPDATE 表名 SET 列名1&#x3D;值1，列名2&#x3D;值2，…[WHERE 条件];<br>    <strong>注意：修改语句中如果不加条件，则将所有数据都修改！</strong></p>
-<p>3.删除数据</p>
-<blockquote>
-<p>DELETE FROM 表名 [WHERE 条件];</p>
-</blockquote>
-<h1 id="DQL"><a href="#DQL" class="headerlink" title="DQL"></a>DQL</h1><h2 id="1-查询语法"><a href="#1-查询语法" class="headerlink" title="1.查询语法"></a>1.查询语法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">    字段列表</span><br><span class="line">FROM</span><br><span class="line">    表名列表</span><br><span class="line">WHERE       </span><br><span class="line">    条件列表</span><br><span class="line">GROUP BY      </span><br><span class="line">    分组列表</span><br><span class="line">HAVING       </span><br><span class="line">    分组后条件</span><br><span class="line">ORDER BY       </span><br><span class="line">    排序字段</span><br><span class="line">LIMIT</span><br><span class="line">    分页限定</span><br></pre></td></tr></table></figure>
-<h2 id="2-基础查询"><a href="#2-基础查询" class="headerlink" title="2.基础查询"></a>2.基础查询</h2><pre><code>2.1 查询多个字段
-&gt;SELECT 字段列表 FROM表名;
-查询所有列的数据，列名列表可以使用*来代替，不要使用！！
-
-2.2 去除重复记录
-&gt;SELECT DISTINCT 字段列表 FROM 表名;
-
-2.3 起别名
-&gt;AS: AS也可以省略‘
-eg:SELECT math AS 数学成绩 FROM stu;
-</code></pre>
-<h2 id="3-条件查询-WHERE"><a href="#3-条件查询-WHERE" class="headerlink" title="3.条件查询(WHERE)"></a>3.条件查询(WHERE)</h2><p>   3.1条件查询语法</p>
-<blockquote>
-<p>SELECT 字段列表 FROM 表名 WHERE 条件列表;</p>
-</blockquote>
-<p>   3.2条件<br>   <img src="https://img-blog.csdnimg.cn/37068913a8934b038d78b5109829b03c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<blockquote>
-<p>—-查询年龄在20-30岁的信息<br>SELECT * FROM stu WHERE age&gt;&#x3D;20 &amp;&amp; age&lt;&#x3D;30;<br>SELECT * FROM stu WHERE age&gt;&#x3D;20 AND age&lt;&#x3D;30;<br>SELECT * FROM stu WHERE age BETWEEN 20 AND 30;</p>
-</blockquote>
-<blockquote>
-<p>—-查询生日在2001-1-1至2003-1-1之间的信息<br>SELECT * FROM stu WHERE birthday&gt;&#x3D;2001-1-1 &amp;&amp;  birthday&lt;&#x3D;2003-1-1;<br>SELECT * FROM stu WHERE  birthday&gt;&#x3D;2001-1-1 AND  birthday&lt;&#x3D;2003-1-1;<br>SELECT * FROM stu WHERE  birthday BETWEEN 2001-1-1 AND 2003-1-1;</p>
-</blockquote>
-<blockquote>
-<p>模糊查询   _单个字符   %多个字符<br>查询姓“马”的信息<br>SELECT * FROM stu WHERE name LIKE ‘马%’;<br>查询姓名第二个字为“花”的信息<br>SELECT * FROM stu WHERE name LIKE ‘_花%’;<br>查询姓名中有“德”的信息<br>SELECT * FROM stu WHERE name LIKE ‘%德%’;</p>
-</blockquote>
-<h2 id="4-排序查询（ORDER-BY）"><a href="#4-排序查询（ORDER-BY）" class="headerlink" title="4. 排序查询（ORDER BY）"></a>4. 排序查询（ORDER BY）</h2><pre><code>4.1排序查询语法
-&gt;SELECT 字段列表 FROM 表名 ORDER BY 排序字段名1 [排序方式1]，排序字段名2  [排序方式2]...;
-</code></pre>
-<p>   4.2排序方式<br>      &gt; ASD:升序排列<br>       DESC:降序排列<br>      &gt; <strong>注意：如果有多个排序条件，当前边的条件值一样时，才会根据第二条件进行排序</strong></p>
-<h2 id="5-聚合函数"><a href="#5-聚合函数" class="headerlink" title="5.   聚合函数"></a>5.   聚合函数</h2><p>5.1概念<br>将一列数据作为一个整体，进行纵向计算<br> 5.2聚合函数分类</p>
-<table>
-<thead>
-<tr>
-<th>函数名</th>
-<th>功能</th>
-<th>补充</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>count(列名)</td>
-<td>统计数量（一般选用不为null的列）</td>
-<td>取值：1.主键  2.  *</td>
-</tr>
-<tr>
-<td>max(列名)</td>
-<td>最大值</td>
-<td></td>
-</tr>
-<tr>
-<td>min(l列名)</td>
-<td>最小值</td>
-<td>当值为ull时不参与</td>
-</tr>
-<tr>
-<td>sum(列名)</td>
-<td>求和</td>
-<td></td>
-</tr>
-<tr>
-<td>avg(列名)</td>
-<td>平均值</td>
-<td></td>
-</tr>
-</tbody></table>
-<p> 5.3聚合函数语法</p>
-<blockquote>
-<p>  SELECT 聚合函数名（列名） FROM 表;</p>
-</blockquote>
-<p>  <strong>null值不参与所有的聚合运算</strong>   </p>
-<h2 id="6-分组查询-GROUP-BY"><a href="#6-分组查询-GROUP-BY" class="headerlink" title="6. 分组查询(GROUP BY)"></a>6. 分组查询(GROUP BY)</h2><blockquote>
-<p>SELECT 字段列表 FROM 表名 [WHERE 分组前条件限定] GROUP BY 分组字段名 [HAVING 分组后条件过滤];<br><strong>注意：分组之后，查询的字段为聚合函数和分组字段，查询其他字段无任何意义</strong><br>WHERE和HAVING的区别：</p>
-<ol>
-<li>执行时机不一样：where是分组之前进行限定，不满足where条件，则不参与分组，而having是分组之后对结果进行过滤</li>
-<li>可判断的条件不一样；where不能对聚合函数进行判断，having可以</li>
-</ol>
-</blockquote>
-<h2 id="7-分页查询（LIMIT）"><a href="#7-分页查询（LIMIT）" class="headerlink" title="7. 分页查询（LIMIT）"></a>7. 分页查询（LIMIT）</h2><blockquote>
-<p>SELECT 字段列表 FROM 表名 LIMIT 起始索引，查询条目数；<br>起始索引：从零开始<br><strong>计算公式：起始索引&#x3D;（当前页码-1）</strong> * <strong>每页显示的条目数</strong></p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/18/SQL%E8%AF%AD%E5%8F%A5/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-java开发 日志框架" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/18/java%E5%BC%80%E5%8F%91%20%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/">java开发 日志框架</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/18/java%E5%BC%80%E5%8F%91%20%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/" class="archive-article-date">
-  	<time datetime="2022-03-18T01:14:54.084Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="一-日志技术的概述"><a href="#一-日志技术的概述" class="headerlink" title="一. 日志技术的概述"></a>一. 日志技术的概述</h1><p><strong>程序中的日志可以用来记录程序运行过程中的信息，并可以进行永久的存储</strong>。</p>
-<p>采用输出语句到控制台的<strong>弊端</strong>：</p>
-<blockquote>
-<p> 1.信息只能显示在控制台<br>  2.不能将其记录到其他位置（文件，数据库）<br>  3.想取消记录的信息需要修改代码才可以完成</p>
-</blockquote>
-<p>日志技术具备的<strong>优势</strong>：</p>
-<blockquote>
-<p>1.可以将系统执行的信息选择性的记录到指定的位置（控制台，文件，数据库）<br>2.可以随时以开关的形式控制是否记录日志，无需修改代码</p>
-</blockquote>
-<h1 id="二-日志技术体系"><a href="#二-日志技术体系" class="headerlink" title="二. 日志技术体系"></a>二. 日志技术体系</h1><p><strong>日志规范：一些接口，提供给日志的实现框架设计的标准。</strong></p>
-<p><strong>日志框架：牛人或第三方公司已经做好的日志记录实现代码，后来者可以直接拿去使用。</strong></p>
-<blockquote>
-<p><strong>日志规范接口</strong></p>
-<blockquote>
-<p>Commons Logging(JCL)<br>Simple Logging Facade for Java（slf4j）</p>
-</blockquote>
-<p><strong>日志实现对象</strong></p>
-<blockquote>
-<p>Log4<br>JUL(java.uil.logging)<br>Logback<br>其他实现</p>
-</blockquote>
-</blockquote>
-<h1 id="三-Logback日志框架"><a href="#三-Logback日志框架" class="headerlink" title="三. Logback日志框架"></a>三. Logback日志框架</h1><p>logback是基于slf4j的日志规范实现的框架。</p>
-<p>Logback 的架构非常通用，可以在不同的情况下应用。目前，<strong>logback 分为三个模块，logback-core、logback-classic 和 logback-access</strong>。</p>
-<p><strong>logback-core 模块为其他两个模块奠定了基础</strong>。<strong>logback-classic 模块可以同化为 log4j 1.x 的显着改进版本</strong>。此外，logback-classic 原生实现了<strong>SLF4J API</strong>，因此您可以轻松地在 logback 和其他日志框架（例如 log4j 1.x 或 java.util.logging (JUL)）之间来回切换。</p>
-<p><strong>logback-access 模块与 Tomcat 和 Jetty 等 Servlet 容器集成，以提供 HTTP 访问日志功能</strong>。请注意，您可以轻松地在 logback-core 之上构建自己的模块。<br><a href="%5Dhttps://logback.qos.ch/">LOGBack官网</a><br>logback-core，logback-classic，SLF4J API的jar包<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1HqLfsDsxzuW6g2Pzb5yoHw">提取码：jjc3</a> </p>
-<h1 id="四-Logback快速入门"><a href="#四-Logback快速入门" class="headerlink" title="四. Logback快速入门"></a>四. Logback快速入门</h1><p>需求：导入logback日志技术到项目中，用于记录系统的日志信息。<br>分析：<br>1.在项目下新建文件夹lib，导入logback的相关jar包到该文件夹，并添加到项目依赖库中去。<br>1.1创建一个新的模块<br><img src="https://img-blog.csdnimg.cn/b02fea60d917412dac473dbe0c481fcd.png" alt="创建一个新的模块"><br>1.2在模块中创建一个新的文件夹，名称为lib<br><img src="https://img-blog.csdnimg.cn/a74ed31f0ad14f8eb4dc791a568d76cf.png"><br>1.3把jar包直接拷贝进去<br><img src="https://img-blog.csdnimg.cn/6160fafd334840908941a84b9b367fc6.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16"><br>1.4 将jar包添加到项目依赖库中去<br>选中Jar包右键，点击add as library<br><img src="https://img-blog.csdnimg.cn/41e7ce40bcb34bd38f9a0b361a3049d8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>确定<br><img src="https://img-blog.csdnimg.cn/f7baa611033944a9bd6b8331564910d9.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16"><br>出现小箭头即可<br><img src="https://img-blog.csdnimg.cn/ad55459087aa4ae4bf2011563ab761d1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>2.将logback的核心配置文件logback.xml直接拷贝到src目录下（必须是src下）<br><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1pyWwT-MDlSvDnV31GB8JtQ">logback.xml  提取码：e6f2</a><br><img src="https://img-blog.csdnimg.cn/daee726d48ff42428fb23a51f705d025.png" alt="在这里插入图片描述"><br>3.在代码中获取日志对象</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static final Logger LOGGER = LoggerFactory.getLogger(&quot;类对象&quot;);</span><br></pre></td></tr></table></figure>
-<p>新建一个Test的测试类</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import org.slf4j.Logger;</span><br><span class="line">import org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line">public class Test &#123;</span><br><span class="line">    //创建Logback的日志对象，代表了日志技术。</span><br><span class="line">    //静态常量对象</span><br><span class="line">    public static final Logger LOGGER = LoggerFactory.getLogger(&quot;Test.class&quot;);</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        //快捷键ctrl+alt+T</span><br><span class="line">        try &#123;</span><br><span class="line"></span><br><span class="line">            LOGGER.debug(&quot;Mian函数开始执行了&quot;);</span><br><span class="line">            LOGGER.info(&quot;我要开始记录第二行日志，开始做除法&quot;);</span><br><span class="line">            int a = 4;</span><br><span class="line">            int b  =0;</span><br><span class="line">            int num = a/b;</span><br><span class="line">            LOGGER.trace(&quot;a=&quot;+a);</span><br><span class="line">            LOGGER.trace(&quot;b=&quot;+b);</span><br><span class="line">            System.out.println(&quot;num=&quot;+num);</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            LOGGER.error(&quot;出现问题&quot;+e);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>注意：日志文件输出的地址由logback.xml文件决定，可自行更改<br><img src="https://img-blog.csdnimg.cn/11aef10eb1404a72a512cca25c5372f7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16"><br>4.使用日志对象LOGGER调用其方法输出不能的日志信息</p>
-<h1 id="五-Logback-配置详解"><a href="#五-Logback-配置详解" class="headerlink" title="五. Logback 配置详解"></a>五. Logback 配置详解</h1><h2 id="5-1输出位置，格式设置"><a href="#5-1输出位置，格式设置" class="headerlink" title="5.1输出位置，格式设置"></a>5.1输出位置，格式设置</h2><p>Logback日志系统的特性都是通过核心配置文件Logback.xml控制的。</p>
-<blockquote>
-<p>通过logback.xml中的<append>标签可以设置输出位置和日志信息的详细格式。<br>通常可以设置两个日志输出位置：控制台，系统文件</p>
-</blockquote>
-<p>输出到控制台的配置标志</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- CONSOLE ：表示当前的日志信息是可以输出到控制台的。 --&gt;</span><br><span class="line"> &lt;appender name=&quot;CONSOLE&quot; class=&quot;ch.qos.logback.core.ConsoleAppender&quot;&gt;</span><br></pre></td></tr></table></figure>
-<p>输出到系统文件的配置标志</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- File是输出的方向通向文件的 --&gt;</span><br><span class="line">   &lt;appender name=&quot;FILE&quot; class=&quot;ch.qos.logback.core.rolling.RollingFileAppender&quot;&gt;</span><br></pre></td></tr></table></figure>
-<p>输出日志的格式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度，%msg：日志消息，%n是换行符--&gt;</span><br><span class="line">&lt;pattern&gt;%d&#123;yyyy-MM-dd HH:mm:ss.SSS&#125; [%thread] %-5level %logger&#123;36&#125; - %msg%n&lt;/pattern&gt;</span><br></pre></td></tr></table></figure>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--  打印所有日志</span><br><span class="line">如果不包含console则控制台只打印错误日志</span><br><span class="line">--&gt;</span><br><span class="line"> &lt;root level=&quot;ALL&quot;&gt;</span><br><span class="line">       &lt;appender-ref ref=&quot;CONSOLE&quot;/&gt;</span><br><span class="line">       &lt;appender-ref ref=&quot;FILE&quot; /&gt;</span><br><span class="line">   &lt;/root&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="5-2-对日志不同内容是否输出的控制"><a href="#5-2-对日志不同内容是否输出的控制" class="headerlink" title="5.2 对日志不同内容是否输出的控制"></a>5.2 对日志不同内容是否输出的控制</h2><p> 可以通过设置日志的出输出级别来控制哪些日志信息输出或不输出</p>
-<blockquote>
-<p>日志级别：<br>TRACE&lt;DEBUG&lt;INFO&lt;WARN&lt;ERROR；默认级别是debug（忽略大小写），对应其方法<br>作用：用于控制系统中哪些日志级别是可以输出的，只输出级别不低于设定级别的日志信息。<br>ALL和OF分别是打开全部日志信息及关闭全部日志信息。<br>具体在</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&lt;root level=&quot;Error&quot;/&gt;</span><br><span class="line">          &lt;appender-ref ref=&quot;CONSOLE&quot;&gt;</span><br><span class="line">          &lt;appender-ref ref = &quot;FILE&quot;/&gt;</span><br><span class="line">&gt;&lt;/root&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/18/java%E5%BC%80%E5%8F%91%20%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-java基础 IO流" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/18/java%E5%9F%BA%E7%A1%80%20IO%E6%B5%81/">java基础 IO流</a>
+    <h1 class="article-title" itemprop="name">
+      java基础 IO流
     </h1>
   
 
@@ -551,6 +277,27 @@ eg:SELECT math AS 数学成绩 FROM stu;
       
 
       
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
     <div class="article-info article-info-index">
       
@@ -558,16 +305,84 @@ eg:SELECT math AS 数学成绩 FROM stu;
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/18/java%E5%9F%BA%E7%A1%80%20IO%E6%B5%81/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/03/18/java%E5%9F%BA%E7%A1%80%20IO%E6%B5%81/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2022/03/18/java%E5%BC%80%E5%8F%91%20%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          java开发 日志框架
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/03/18/Java%E5%9F%BA%E7%A1%80%20file%EF%BD%A4%E6%96%B9%E6%B3%95%E9%80%92%E3%80%81IO%E6%B5%81/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java基础 file､方法递、IO流</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -587,271 +402,14 @@ eg:SELECT math AS 数学成绩 FROM stu;
 
 
 
-
   
-    <article id="post-Java基础 file､方法递、IO流" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/18/Java%E5%9F%BA%E7%A1%80%20file%EF%BD%A4%E6%96%B9%E6%B3%95%E9%80%92%E3%80%81IO%E6%B5%81/">Java基础 file､方法递、IO流</a>
-    </h1>
   
 
-        
-        <a href="/2022/03/18/Java%E5%9F%BA%E7%A1%80%20file%EF%BD%A4%E6%96%B9%E6%B3%95%E9%80%92%E3%80%81IO%E6%B5%81/" class="archive-article-date">
-  	<time datetime="2022-03-18T01:14:54.070Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="File类概述"><a href="#File类概述" class="headerlink" title="File类概述"></a>File类概述</h1><p>File类在包 java.io.File下，代表操作系统的文件对象（文件、文件夹）<br>File类提供了诸如：定位文件获取文件本身信息，删除文件，创建文件（文件夹）等功能</p>
-<h2 id="File类创建对象"><a href="#File类创建对象" class="headerlink" title="File类创建对象"></a>File类创建对象</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//构造方法</span><br><span class="line">File (String pathname ) </span><br><span class="line">File （File parent, String child）</span><br><span class="line">File（File parent String , String child）</span><br></pre></td></tr></table></figure>
-<h2 id="创建File对象（指定文件的路径）"><a href="#创建File对象（指定文件的路径）" class="headerlink" title="创建File对象（指定文件的路径）"></a>创建File对象（指定文件的路径）</h2><p>路径写法：<br>1.D:\study\xuesheng.jpeg<br>2.D:&#x2F;study&#x2F;xuesheng.jpeg</p>
-<h2 id="创建File对象（支持绝对路经，支持相对路径（重点））"><a href="#创建File对象（支持绝对路经，支持相对路径（重点））" class="headerlink" title="创建File对象（支持绝对路经，支持相对路径（重点））"></a>创建File对象（支持绝对路经，支持相对路径（重点））</h2><p>绝对路经：从盘符开始，依赖当前系统<br>相对路经：一般定位于模块中的文件的，定位到工程下<br><img src="https://img-blog.csdnimg.cn/75b0892388ec4599b46d5ca337bfda59.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETkDprYfkuZ3vuI8,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">File f = new File(“file-io-app.src.data.txt”);</span><br></pre></td></tr></table></figure>
-<h2 id="File-创建对象（可以是文件也可以是文件夹）"><a href="#File-创建对象（可以是文件也可以是文件夹）" class="headerlink" title="File 创建对象（可以是文件也可以是文件夹）"></a>File 创建对象（可以是文件也可以是文件夹）</h2><h1 id="file常用API"><a href="#file常用API" class="headerlink" title="file常用API"></a>file常用API</h1><h2 id="判断文件类型，获取文件信息"><a href="#判断文件类型，获取文件信息" class="headerlink" title="判断文件类型，获取文件信息"></a>判断文件类型，获取文件信息</h2><p><img src="https://img-blog.csdnimg.cn/ba957d0c0dd64af2b2c643d0e4f1de39.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETkDprYfkuZ3vuI8,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">File f = new File (“D:\\study\\xuesheng.jpeg”);</span><br><span class="line">long time = f.lastModified();</span><br><span class="line">System.out.println(“最后的修改时间是”+new SimpleDateFormat(“yyyy/MM/did HH:mm:ss”).format(time));</span><br></pre></td></tr></table></figure>
-<h2 id="创建文件，删除文件功能"><a href="#创建文件，删除文件功能" class="headerlink" title="创建文件，删除文件功能"></a>创建文件，删除文件功能</h2><p><img src="https://img-blog.csdnimg.cn/48d2281e2ed3487d9fd62c8ceaa0fe62.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16"><br><img src="https://img-blog.csdnimg.cn/6014dc6181d140de8a7ebef5c0d00701.png"><br>删除文件，占用也可以删除</p>
-<h2 id="遍历文件夹"><a href="#遍历文件夹" class="headerlink" title="遍历文件夹"></a>遍历文件夹</h2><p><img src="https://img-blog.csdnimg.cn/9cca6c5e262c40a7bfb2aa8a6a79410a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//1. 定位一个目录</span><br><span class="line">File f = new File (&quot;D:/study&quot;);</span><br><span class="line">String [] names = f.list();</span><br><span class="line">for(String name:names)&#123;</span><br><span class="line">    System.out.println(&quot;name&quot;);</span><br><span class="line">&#125;</span><br><span class="line">//2.只能遍历 一级文件对象</span><br><span class="line">File files = f.listFiles();</span><br><span class="line">for(File file:files)&#123;</span><br><span class="line">    System.out.println(&quot;file.getAbsolutePath()&quot;);</span><br><span class="line">&#125;</span><br><span class="line">//3.listFiles 注意事项：</span><br><span class="line">//当调用者不存在时，返回null</span><br><span class="line">//当调用者是一个文件时，返回null</span><br><span class="line">//当调用着是一个空文件夹时，返回一个长度为0的数组</span><br><span class="line">//当调用者是一个有内容的文件夹时,将文件和文件夹的路径放在File数组中</span><br><span class="line">//当调用者是一个有隐藏文件的文件夹时，将里面所有的文件和文件夹的路径放在File数组中返回，包含隐藏内容</span><br></pre></td></tr></table></figure>
-<h1 id="方法递归（文件搜索）"><a href="#方法递归（文件搜索）" class="headerlink" title="方法递归（文件搜索）"></a>方法递归（文件搜索）</h1><h2 id="递归的形式和特点"><a href="#递归的形式和特点" class="headerlink" title="递归的形式和特点"></a>递归的形式和特点</h2><p>方法递归：方法直接调用自己或者间接调用自己的形式称为方法递归</p>
-<blockquote>
-<p>直接递归：方法自己调用自己<br>间接递归：方法调用其他方法，其他方法又回调方法自己</p>
-</blockquote>
-<h2 id="递归的算法流程，核心要素"><a href="#递归的算法流程，核心要素" class="headerlink" title="递归的算法流程，核心要素"></a>递归的算法流程，核心要素</h2><blockquote>
-<p>导学-计算1-n的阶乘<br>公式为f(n) &#x3D; f(n-1)*n;</p>
-</blockquote>
-<h2 id="非规律化递归案例-文件搜索"><a href="#非规律化递归案例-文件搜索" class="headerlink" title="非规律化递归案例-文件搜索"></a>非规律化递归案例-文件搜索</h2><blockquote>
-<p>需求：文件搜索，从C盘中，搜索出某个文件名称并输出绝对路径<br>分析：<br>   1.先定位出的应该是一级文件对象<br>   2.遍历所有一级文件对象，判断是否为文件<br>   3.如果是文件，判断是否为自己想要<br>   4.如果是文件夹，需要继续递归进去重复上述过程</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import java.io.File;</span><br><span class="line"></span><br><span class="line">public class RecursionDemo &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        //2. 传入目录 和 文件名称</span><br><span class="line">        File file = new File(&quot;D:/&quot;);</span><br><span class="line">        searchFile(file,&quot;dhdgffkkebhmkfjojejmpbldmpobfkfo&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     *1. 搜索某个目录下的全部文件，找到我们想要的</span><br><span class="line">     * @param dir  被搜索的源目录</span><br><span class="line">     * @param fileName   被搜索的文件名称</span><br><span class="line">     */</span><br><span class="line">    public static void searchFile(File dir,String fileName)&#123;</span><br><span class="line">        //3. 判断dir是否为目录</span><br><span class="line">        if(dir!=null &amp;&amp; dir.isDirectory())&#123;</span><br><span class="line">            //可以找了</span><br><span class="line">            //4. 提取当前目录下的以及文件对象</span><br><span class="line">            File files[] = dir.listFiles();</span><br><span class="line">            //5. 判断是否存在一级文件对象，存在在遍历</span><br><span class="line">            if(files !=null&amp;&amp;files.length!=0)&#123;</span><br><span class="line">                for (File file :files)&#123;</span><br><span class="line">                    //6. 判断当前的一级文件对象是文件还是目录</span><br><span class="line">                    if(file.isFile())&#123;</span><br><span class="line">                        //7. 是不是我们要找的</span><br><span class="line">                        if(file.getName().contains((fileName)))&#123;</span><br><span class="line">                            System.out.println(&quot;找到了&quot;+file.getAbsoluteFile());</span><br><span class="line">                        &#125;</span><br><span class="line">                        //8. 是文件夹</span><br><span class="line"></span><br><span class="line">                    &#125;else &#123;</span><br><span class="line">                        searchFile(file,fileName);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            System.out.println(&quot;对不起当前搜索的位置不是文件夹&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h1><h2 id="常见字符集介绍"><a href="#常见字符集介绍" class="headerlink" title="常见字符集介绍"></a>常见字符集介绍</h2><blockquote>
-<p>基础知识<br>  1.计算机底层不能直接存储字符的，计算机中底层只能存储二进制（0，1）<br>  2.二进制是可以转换为十进制的<br>  3.计算机底层是可以表示十进制编号。计算机可以给文类字符进行编号存储，这套编号规则就是字符集<br><strong>ASCII字符集</strong><br><strong>GBK</strong><br><strong>Unicode码表（统一码，万国码）：由于Unicode会先通过UTF-8的编码称二进制后再存储到计算机</strong> </p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/ba71abd0acc14816bb57a74def23d8fd.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16"><br>字符串常见的字符组成：<br>英文和数字等在任何国家的字符集中都占一个字节<br>GBK字符中一个英文字符占2个字节<br>UTF-8编码中一个中文一般占三个字节<br>编码前的字符集和编码好的字符集必须一致，否则会出现中文符乱码</p>
-<h2 id="字符集的编码，解码操作"><a href="#字符集的编码，解码操作" class="headerlink" title="字符集的编码，解码操作"></a>字符集的编码，解码操作</h2><p><img src="https://img-blog.csdnimg.cn/7a891f4362f3479280c9d07ebbdc3dc1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16"><br><img src="https://img-blog.csdnimg.cn/135067a2825842c9be6f9c3187da8e72.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import java.io.UnsupportedEncodingException;</span><br><span class="line">import java.nio.charset.StandardCharsets;</span><br><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        //1. 编码：把文字转换为字节（使用指定编码）</span><br><span class="line">        String name = &quot;abc我爱你中国&quot;;</span><br><span class="line">        byte[] bytes = new byte[0];//以当前代码默认字符集进行编码（UTF-8）</span><br><span class="line">       // bytes = name.getBytes();</span><br><span class="line">        try &#123;</span><br><span class="line"></span><br><span class="line">            bytes = name.getBytes(&quot;GBK&quot;);</span><br><span class="line">        &#125; catch (UnsupportedEncodingException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(bytes.length);</span><br><span class="line">        System.out.println(Arrays.toString(bytes));</span><br><span class="line"></span><br><span class="line">        //2. 解码：把字节转换成对应的中文形式（编码前和编码后的字符集必须一致，否则乱码）</span><br><span class="line">        String rs = null;//默认UTF-8</span><br><span class="line">        try &#123;</span><br><span class="line">            rs = new String(bytes,&quot;GBK&quot;);</span><br><span class="line">        &#125; catch (UnsupportedEncodingException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(rs);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h1 id="IO流概述"><a href="#IO流概述" class="headerlink" title="IO流概述"></a>IO流概述</h1><h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p><strong>按流的方向分</strong><br>IO流也称为输入，输出流，就是用来读写数据的<br>I表示input，是从数据从硬盘文件读入到内存的过程，称之输入，负责读<br>O表示output，是内存程序的数据从内存写出到硬盘文件的过程，称之为输出，负责写<br><strong>按流中的数据最小单位分</strong><br>字节流<br>字符流<br><strong>组合</strong></p>
-<table>
-<thead>
-<tr>
-<th>流</th>
-<th>概念</th>
-<th>抽象类</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>字节输入流</strong></td>
-<td>以内存为基准，来自磁盘文件&#x2F;网络中的数据<strong>以字节的形式读入到内存</strong>中去的流</td>
-<td>InputStream</td>
-</tr>
-<tr>
-<td><strong>字节输出流</strong></td>
-<td>以内存为基准，把来自内存中的数据<strong>以字节写出到磁盘文件&#x2F;网络</strong>中去的流</td>
-<td>OutputStream</td>
-</tr>
-<tr>
-<td><strong>字符输入流</strong></td>
-<td>以内存为基准，来自磁盘文件&#x2F;网络中的数据<strong>以字符的形式读入到内存</strong>中去的流</td>
-<td>Reader</td>
-</tr>
-<tr>
-<td><strong>字符输出流</strong></td>
-<td>以内存为基准，把来自内存中的数据<strong>以字符写出到磁盘文件&#x2F;网络</strong>中去的流</td>
-<td>Writer</td>
-</tr>
-</tbody></table>
-<h1 id="字节流的使用"><a href="#字节流的使用" class="headerlink" title="字节流的使用"></a>字节流的使用</h1><p><strong>字节流适合做一切文件数据的拷贝，任何文件底层都是字节，拷贝是一字不漏地转移字节，只要前后的文件格式，编码一致没有任何问题。</strong></p>
-<h2 id="字节输入流：每次读取一个字节"><a href="#字节输入流：每次读取一个字节" class="headerlink" title="字节输入流：每次读取一个字节"></a>字节输入流：每次读取一个字节</h2><p><img src="https://img-blog.csdnimg.cn/83958ccab1754a61a86921bedeb3a6d4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16"><br><img src="https://img-blog.csdnimg.cn/6a09e24c085d493eb81e26837873c06a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16"><br><img src="https://img-blog.csdnimg.cn/8f5cae71797a47a2b2c88e28ee8cd8ed.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_19,color_FFFFFF,t_70,g_se,x_16"><br><img src="https://img-blog.csdnimg.cn/7df5cd8cfd1044d497812fe82ef955dc.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16"><br>输出结果<br><img src="https://img-blog.csdnimg.cn/53c7a4f67ee44d46b4bc45903f176517.png" alt="在这里插入图片描述"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import java.io.FileInputStream;</span><br><span class="line">import java.io.FileNotFoundException;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.InputStream;</span><br><span class="line"></span><br><span class="line">public class FileInputSream &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            //1. 创建一个文件字节输出流管道与源文件接通</span><br><span class="line">            //InputStream is = new FileInputStream(new File(&quot;SuanFa\\logback-APP\\srd\\data&quot;));</span><br><span class="line">            //简写</span><br><span class="line">            InputStream is = new FileInputStream(&quot;logback-APP\\src\\data&quot;);</span><br><span class="line">//            //读取一个字符并返回</span><br><span class="line">//            int bi = is.read();</span><br><span class="line">//            System.out.println((char) bi);</span><br><span class="line">            int b ;</span><br><span class="line">            while ((b = is.read())!=-1)&#123;</span><br><span class="line">                System.out.print((char) b);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>每次读取一个字节存在的问题<br>    性能比较慢<br>    读取中文字符输出无法避免乱码问题</p>
-</blockquote>
-<h2 id="字节输入流：每次读取一个字节数组"><a href="#字节输入流：每次读取一个字节数组" class="headerlink" title="字节输入流：每次读取一个字节数组"></a>字节输入流：每次读取一个字节数组</h2><p><img src="https://img-blog.csdnimg.cn/02c253f65825459686871a615b0cebc2.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16"><br><img src="https://img-blog.csdnimg.cn/ecdb23785cc643d0a03aaefa485e9343.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/d4710d0205df4ebfb86e4f47915a72bb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import java.io.FileInputStream;</span><br><span class="line">import java.io.InputStream;</span><br><span class="line"></span><br><span class="line">public class FileInputSream_Demo02 &#123;</span><br><span class="line">    /**</span><br><span class="line">     *目标：使用文件字节输入流每次读取一个字节数组的数据</span><br><span class="line">     */</span><br><span class="line">    public static void main(String[] args) throws Exception&#123;</span><br><span class="line">        //1. 创建一个文件字节输入流管道与源文件接通</span><br><span class="line">        InputStream is = new FileInputStream(&quot;logback-APP\\src\\data&quot;);</span><br><span class="line"></span><br><span class="line">//        //2. 定义一个字节数组，用于读取字节数组</span><br><span class="line">//        byte[]  buffer = new byte[3];</span><br><span class="line">//        int len1 = is.read(buffer);</span><br><span class="line">//        System.out.println(&quot;读取了几个字节&quot;+len1);</span><br><span class="line">//        String rs1 = new String(buffer);</span><br><span class="line">//        System.out.println(rs1);</span><br><span class="line">//</span><br><span class="line">//        int len2 = is.read(buffer);</span><br><span class="line">//        System.out.println(&quot;读取了几个字节&quot;+len2);</span><br><span class="line">//        String rs2 = new String(buffer);</span><br><span class="line">//        System.out.println(rs2);</span><br><span class="line">//</span><br><span class="line">//        int len3 = is.read(buffer);</span><br><span class="line">//        System.out.println(&quot;读取了几个字节&quot;+len3);</span><br><span class="line">//        //读取多少，倒出多少</span><br><span class="line">//        String rs3 = new String(buffer,0,len3);</span><br><span class="line">//        System.out.println(rs3);</span><br><span class="line">//</span><br><span class="line">        //使用循环</span><br><span class="line">        byte[] buffer = new byte[3];</span><br><span class="line">        int len ;</span><br><span class="line">        while((len=is.read(buffer))!=-1)&#123;</span><br><span class="line">            //读取多少，倒出多少</span><br><span class="line">            System.out.print(new String(buffer,0,len));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>每次读取一个字节数组存在的问题<br>    性能得到了提升<br>    读取中文字符输出无法避免乱码问题</p>
-</blockquote>
-<h2 id="字节输入流：一次读完全部字节"><a href="#字节输入流：一次读完全部字节" class="headerlink" title="字节输入流：一次读完全部字节"></a>字节输入流：一次读完全部字节</h2><blockquote>
-<p>如何使用字节输入流读取中文内容输出不出现乱码<br>     定义一个与文件一样大的字节数组，一次性读取完文件的全部字节<br>直接把文件数据读取到一个字节数组可以避免乱码存在的问题、<br>     如果文件过大，字节数组可能引起内存溢出</p>
-</blockquote>
-<p><strong>方式一：自己·定义一个与文件大小一样大，然后使用读取字节数组的方法，一次性读取完成</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import java.io.File;</span><br><span class="line"></span><br><span class="line">import java.io.FileInputStream;</span><br><span class="line">import java.io.InputStream;</span><br><span class="line"></span><br><span class="line">public class FileInputSream_Demo03 &#123;</span><br><span class="line">    /**</span><br><span class="line">     *目标：使用文件字节输入流一次读取文件中的所有数据，可以解决中文乱码问题</span><br><span class="line">     */</span><br><span class="line">    public static void main(String[] args) throws Exception&#123;</span><br><span class="line">        //1. 创建一个文件字节输入流管道与源文件接通</span><br><span class="line">        File f = new File(&quot;logback-APP\\src\\data&quot;);</span><br><span class="line">        InputStream is = new FileInputStream(f);</span><br><span class="line"></span><br><span class="line">        //2.定义一个字节数组与文件的大小一样大</span><br><span class="line">        byte [] buffer = new byte[(int)f.length()];</span><br><span class="line">        int len = is.read(buffer);</span><br><span class="line">        System.out.println(&quot;读取了多少字节&quot;+len);</span><br><span class="line">        System.out.println(&quot;文件大小&quot;+f.length());</span><br><span class="line">        System.out.println(new String(buffer));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><strong>方法二：官方为字节输入流InputStream提供了如下API可以将字节把文件全部数据提取到一个字节数组中</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bytes []  buffer = is.readAllBytes();</span><br></pre></td></tr></table></figure>
-<h2 id="字节输出流：写字节数据到文件"><a href="#字节输出流：写字节数据到文件" class="headerlink" title="字节输出流：写字节数据到文件"></a>字节输出流：写字节数据到文件</h2><p><img src="https://img-blog.csdnimg.cn/be6871aad035460a8ddf3fca78aba2c6.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/38890d27f44b497ea961bca21578f3b5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16"><br><img src="https://img-blog.csdnimg.cn/600adc76ca644ed98ff958ea5e8675d4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/48fe40abd0354f4399b4093df29293ca.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">import java.io.FileOutputStream;</span><br><span class="line">import java.io.OutputStream;</span><br><span class="line">import java.nio.charset.StandardCharsets;</span><br><span class="line"></span><br><span class="line">public class FileOutputSream_Demo01 &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception&#123;</span><br><span class="line">        //1. 创建一个文件字节输出流管道与目标文件接通</span><br><span class="line">        OutputStream os = new FileOutputStream(&quot;logback-APP\\\\src\\\\data&quot;,true);</span><br><span class="line">       // OutputStream os = new FileOutputStream(&quot;logback-APP\\\\src\\\\data&quot;);//先清空之前的数据，写新的数据</span><br><span class="line">        //2. 写数据出去</span><br><span class="line">        //a. public void write(int a):写一个字节出去</span><br><span class="line">        os.write(&#x27;a&#x27;);</span><br><span class="line">        os.write(98);</span><br><span class="line">       // os.write(&#x27;徐&#x27;);</span><br><span class="line">        os.write(&quot;\r\n&quot;.getBytes(StandardCharsets.UTF_8));//如果只有\n在windows系统中会是换行符，但是在linux系统中将不能识别，\r\n在很多系统中均适用</span><br><span class="line"></span><br><span class="line">        //b. public void write(byte[] buffer):写一个字节数组出去</span><br><span class="line">        byte [] buffer = &#123;&#x27;a&#x27;,97,98,99&#125;;</span><br><span class="line">        os.write(buffer);</span><br><span class="line">        os.write(&quot;\r\n&quot;.getBytes(StandardCharsets.UTF_8));</span><br><span class="line">        byte [] buffer2 = &quot;我是中国人&quot;.getBytes(StandardCharsets.UTF_8);</span><br><span class="line">        os.write(buffer2);</span><br><span class="line">        os.write(&quot;\r\n&quot;.getBytes(StandardCharsets.UTF_8));</span><br><span class="line">        //c. public void write(byte[] buffer):写一个字节数组的一部分出去</span><br><span class="line">        byte [] buffer3 = &#123;&#x27;a&#x27;,97,98,99&#125;;</span><br><span class="line">        os.write(buffer3,0,3);</span><br><span class="line">        os.write(&quot;\r\n&quot;.getBytes(StandardCharsets.UTF_8));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        os.flush();  //写数据一定要刷新数据</span><br><span class="line">        os.close();//释放资源，包含了刷新的！关闭后流不可以再用</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h1 id="资源释放的方式"><a href="#资源释放的方式" class="headerlink" title="资源释放的方式"></a>资源释放的方式</h1><h2 id="try-catch-finally"><a href="#try-catch-finally" class="headerlink" title="try-catch-finally"></a>try-catch-finally</h2><p><strong>finally</strong>：在处理异常时提供finally块来执行所有清除操作<br><strong>特点</strong>：被finally控制的语句最终一定会执行，除非JVM退出（System.exit();）<br><strong>作用</strong>：finally代码块是最终一定要执行的，可以在代码执行完毕的最后用于释放资源</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//格式</span><br><span class="line">try&#123;</span><br><span class="line"></span><br><span class="line">&#125;catch(Exception e)&#123;</span><br><span class="line"></span><br><span class="line">&#125;finally&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import java.io.FileOutputStream;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.OutputStream;</span><br><span class="line">import java.nio.charset.StandardCharsets;</span><br><span class="line"></span><br><span class="line">public class FileOutputSream_Demo01 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        OutputStream os = null;</span><br><span class="line">        try &#123;</span><br><span class="line">            //1. 创建一个文件字节输出流管道与目标文件接通</span><br><span class="line">            os = new FileOutputStream(&quot;logback-APP\\\\src\\\\data&quot;,true);</span><br><span class="line">            // OutputStream os = new FileOutputStream(&quot;logback-APP\\\\src\\\\data&quot;);//先清空之前的数据，写新的数据</span><br><span class="line">            //2. 写数据出去</span><br><span class="line">            //a. public void write(int a):写一个字节出去</span><br><span class="line">            os.write(&#x27;a&#x27;);</span><br><span class="line">            os.write(98);</span><br><span class="line">            // os.write(&#x27;徐&#x27;);</span><br><span class="line">            os.write(&quot;\r\n&quot;.getBytes(StandardCharsets.UTF_8));//如果只有\n在windows系统中会是换行符，但是在linux系统中将不能识别，\r\n在很多系统中均适用</span><br><span class="line"></span><br><span class="line">            os.flush();  //写数据一定要刷新数据</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;finally &#123;</span><br><span class="line">            </span><br><span class="line">                try &#123;</span><br><span class="line">                    if(os!=null)os.close();//释放资源，包含了刷新的！关闭后流不可以再用</span><br><span class="line">                &#125; catch (IOException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;   </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="try-with-resource"><a href="#try-with-resource" class="headerlink" title="try-with-resource"></a>try-with-resource</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">try(定义流对象)&#123;</span><br><span class="line">        可能出现异常的代码</span><br><span class="line">&#125;catch(异常类名 变量名)&#123;</span><br><span class="line">        异常处理代码</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import java.io.FileOutputStream;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.OutputStream;</span><br><span class="line">import java.nio.charset.StandardCharsets;</span><br><span class="line"></span><br><span class="line">public class FileOutputSream_Demo01 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        try (</span><br><span class="line">                //这儿里面只能放置资源对象，用完会自动关闭</span><br><span class="line">                //自动调用资源对象的close方法关闭资源（即使出现异常也会做关闭操作）</span><br><span class="line">                //1. 创建一个文件字节输出流管道与目标文件接通</span><br><span class="line">               OutputStream os = new FileOutputStream(&quot;logback-APP\\\\src\\\\data&quot;,true);</span><br><span class="line">        // OutputStream os = new FileOutputStream(&quot;logback-APP\\\\src\\\\data&quot;);//先清空之前的数据，写新的数据</span><br><span class="line">                )&#123;</span><br><span class="line"></span><br><span class="line">            //2. 写数据出去</span><br><span class="line">            //a. public void write(int a):写一个字节出去</span><br><span class="line">            os.write(&#x27;a&#x27;);</span><br><span class="line">            os.write(98);</span><br><span class="line">            // os.write(&#x27;徐&#x27;);</span><br><span class="line">            os.write(&quot;\r\n&quot;.getBytes(StandardCharsets.UTF_8));//如果只有\n在windows系统中会是换行符，但是在linux系统中将不能识别，\r\n在很多系统中均适用</span><br><span class="line"></span><br><span class="line">            os.flush();  //写数据一定要刷新数据</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>JDK7和JDK9中的（）中只能 放置资源对象，否则报错；这里的资源就是实现了Closeable&#x2F;AutoCloseable接口的类对象</p>
-<h1 id="字符流的使用"><a href="#字符流的使用" class="headerlink" title="字符流的使用"></a>字符流的使用</h1><p>字节流读取中文输出会存在问题：会乱码或内存溢出</p>
-<h2 id="文件字符输入流：一次读取一份字符"><a href="#文件字符输入流：一次读取一份字符" class="headerlink" title="文件字符输入流：一次读取一份字符"></a>文件字符输入流：一次读取一份字符</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import java.io.FileReader;</span><br><span class="line"></span><br><span class="line">import java.io.Reader;</span><br><span class="line"></span><br><span class="line">public class FileReaderDemo01 &#123;</span><br><span class="line">    //目标：每次读取一个字符</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        //1. 创建一个字符输入流管道于与源文件接通</span><br><span class="line">        Reader fr = new FileReader(&quot;logback-APP\\src\\data&quot;);</span><br><span class="line">        //2. 读取一个字符</span><br><span class="line">//        int code = fr.read();</span><br><span class="line">//        System.out.println(code);</span><br><span class="line">//</span><br><span class="line">        //3. 使用循环读取字符</span><br><span class="line">        int code ;</span><br><span class="line">        while ((code=fr.read())!=-1)&#123;</span><br><span class="line">            System.out.print((char)code);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/55368632f1eb483f8f84dfb1ee8861f7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/f1e20842b3064288922382ef17dfa7af.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>字节流的好处：读取中文字符不会出现乱码（如果代码和文件编码一致）<br>每次读取一个字符会存在的问题：性能较慢</p>
-<h2 id="文件字符输入流：一次读取一个字符数组"><a href="#文件字符输入流：一次读取一个字符数组" class="headerlink" title="文件字符输入流：一次读取一个字符数组"></a>文件字符输入流：一次读取一个字符数组</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import java.io.FileReader;</span><br><span class="line">import java.io.Reader;</span><br><span class="line"></span><br><span class="line">public class FileReaderDemo02 &#123;</span><br><span class="line">    //目标：每次读取一个字符</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        //1. 创建一个字符输入流管道于与源文件接通</span><br><span class="line">        Reader fr = new FileReader(&quot;logback-APP\\src\\data&quot;);</span><br><span class="line"></span><br><span class="line">       //2. 用循环每次读取一个字符数组</span><br><span class="line">        char [ ] buffer = new char[1024];</span><br><span class="line">        int len;</span><br><span class="line">        while ((len = fr.read(buffer))!=-1)&#123;</span><br><span class="line">            String rs = new String(buffer,0,len);</span><br><span class="line">            System.out.print(rs);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>每次读取一个字符数组的优势：性能较好</p>
-<h2 id="文件字符输出流"><a href="#文件字符输出流" class="headerlink" title="文件字符输出流"></a>文件字符输出流</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">import java.io.FileWriter;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.Writer;</span><br><span class="line"></span><br><span class="line">public class FileWriterDemo &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        //1. 创建一个字符输出流管道与原文件接通</span><br><span class="line">       // Writer fw = new FileWriter(&quot;logback-APP\\src\\data&quot;);//每次写进去，都会先清空</span><br><span class="line">        Writer fw = new FileWriter(&quot;logback-APP\\src\\data&quot;,true);</span><br><span class="line">        //a. public void write(int c):写一个字符出去</span><br><span class="line">       fw.write(98);</span><br><span class="line">       fw.write(&#x27;s&#x27;);</span><br><span class="line">       fw.write(&#x27;徐&#x27;);</span><br><span class="line">       fw.write(&quot;\r\n&quot;);</span><br><span class="line">        fw.write(&quot;abc 我是个中国人&quot;);</span><br><span class="line">        fw.write(&quot;\r\n&quot;);</span><br><span class="line"></span><br><span class="line">        //c. public void write(char[] buffer):写一个字符数组出去</span><br><span class="line">        fw.write(&quot;abc我是中国人&quot;.toCharArray());</span><br><span class="line">        fw.write(&quot;\r\n&quot;);</span><br><span class="line">        //d. public void write(String c,int len):写一个字符串的一部分出去</span><br><span class="line">        fw.write(&quot;abc我是中国人&quot;,0,4);</span><br><span class="line">        fw.write(&quot;\r\n&quot;);</span><br><span class="line">        //e. public void write(char[] buffer,int len):写一个1字符数组的一部分出去</span><br><span class="line">        fw.write(&quot;abc我是中国人&quot;.toCharArray(),0,4);</span><br><span class="line">        fw.write(&quot;\r\n&quot;);</span><br><span class="line">        fw.flush();</span><br><span class="line">        fw.close();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/d0a4b530d3ba4e5daf18e8046cce02cb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<h1 id="字节流，字符流总结"><a href="#字节流，字符流总结" class="headerlink" title="字节流，字符流总结"></a>字节流，字符流总结</h1><p>字节流，字符流如何选择使用：<br>1.字节流适合做一切文本数据的拷贝<br>2.字节流不适合读取中文输出<br>3.字符流适合作、做文本文件的操作（读，写·）</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/18/Java%E5%9F%BA%E7%A1%80%20file%EF%BD%A4%E6%96%B9%E6%B3%95%E9%80%92%E3%80%81IO%E6%B5%81/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Collections 工具类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/18/Collections%20%E5%B7%A5%E5%85%B7%E7%B1%BB/">Collections 工具类</a>
-    </h1>
   
 
-        
-        <a href="/2022/03/18/Collections%20%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="archive-article-date">
-  	<time datetime="2022-03-18T01:14:54.026Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Collections和Collection的区别"><a href="#Collections和Collection的区别" class="headerlink" title="Collections和Collection的区别"></a>Collections和Collection的区别</h1><blockquote>
-<p>java.util.Collection 是一个<strong>集合接口</strong>。它是Java集合类的低级接口之一，整个集合框架就围绕一组标准接口而设计。</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/5b97578e19e540c49a670398770d547b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-<blockquote>
-<p><strong>Collection</strong>:单列集合的顶端接口，定义了单列集合的共性内容。<br><strong>Collectons</strong>:集合工具类</p>
-</blockquote>
-<blockquote>
-<p>java.util.Collections是一个包装类。它包含各种有关集合操作的静态多态方法。但是此类不能实例化，工具类服务于java的Collection框架</p>
-</blockquote>
-<h1 id="Collections常用方法"><a href="#Collections常用方法" class="headerlink" title="Collections常用方法"></a>Collections常用方法</h1><p>1.Shuffle：洗牌方法，当前集合内的数据进行随机排序<br><img src="https://img-blog.csdnimg.cn/54d5bc3bc4d34ea8b7b3eb110813a75f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16"><br>2.Reverse:逆序排序面对当前集合的元素按照相反的顺序进行排序<br><img src="https://img-blog.csdnimg.cn/a19e74a6c4f949cfa67f425ccfcf1773.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-<p>3.Sort:对当前集合进行升序排序，实现Comparable接口的类，只能使用一种排序方案这种方案叫做“自然比较”方案。</p>
-<h1 id="Collections-自定义排序"><a href="#Collections-自定义排序" class="headerlink" title="Collections 自定义排序"></a>Collections 自定义排序</h1><p><img src="https://img-blog.csdnimg.cn/d5a8bc84dd32494ebfea31f539e2da49.png"></p>
-<h2 id="待排序对象实现Comparable接口"><a href="#待排序对象实现Comparable接口" class="headerlink" title="待排序对象实现Comparable接口"></a>待排序对象实现Comparable接口</h2><blockquote>
-<p><strong>public interface Comparable<T></strong><br>此接口强行对实现它的<strong>每个类的对象</strong>进行整体排序。这种排序被称为类的自然排序，类的 compareTo 方法被称为它的自然比较方法。</p>
-</blockquote>
-<p>实现此接口的对象列表（和数组）可以通过 Collections.sort（和 Arrays.sort）进行自动排序。实现此接口的对象可以用作有序映射中的键或有序集合中的元素，无需指定比较器。</p>
-<p>Collections中的sort方法能对实现了Comparable接口的类进行排序<br>以String类为例，该类实现了Comparable接口，实现了Comparable中的方法compareTo<br><img src="https://img-blog.csdnimg.cn/c1efd954e22f473f9e92b856e504966f.png"></p>
-<blockquote>
-<p>compareTo<br>int compareTo(T o)<br>比较此对象与指定对象的顺序。如果该对象小于、等于或大于指定对象，则分别返回负整数、零或正整数。 </p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/ee6a56d080e849e781cb13e4120633cd.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>由图中代码所示，排列String类的对象实现根据下标从小到大的字符值，再根据字符串的大小。</p>
-<p>如果对一个未实现Comparable接口的类进行排序<br><img src="https://img-blog.csdnimg.cn/b50a9f7ed484402d8e5ebeb862c56342.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>编译出现错误<br>当Student类实现Comparable接口<br><img src="https://img-blog.csdnimg.cn/d6842cb672ce4387aa9e900c160d779b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/b7981dead3f04eef8c75fcee394e004e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>由上可知，当所以要想实现对一个集合排序那么这个集合中的对象一定要实现Comparable接口，如果不实现该接口如何对该集合进行排序呢</p>
-<h2 id="使用Comparable比较器"><a href="#使用Comparable比较器" class="headerlink" title="使用Comparable比较器"></a>使用Comparable比较器</h2><p>需要自定义一个比较器对集合进行排序</p>
-<blockquote>
-<p><strong>public interface Comparator<T></strong><br>强行对某个对象 collection 进行整体排序 的<strong>比较函数</strong>。可以将 Comparator 传递给 sort 方法（如 Collections.sort 或 Arrays.sort），从而允许在排序顺序上实现精确控制。</p>
-</blockquote>
-<p>Comparator:比较器,Comparator是一个接口，创建一个Comparator的对象需要实现其抽象方法Compare<br><img src="https://img-blog.csdnimg.cn/16e2c1fb6783461d907fc6257c1edd87.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-<blockquote>
-<p>compare<br>int compare(T o1,T o2)<br>比较用来排序的两个参数。根据第一个参数小于、等于或大于第二个参数分别返回负整数、零或正整数。</p>
-</blockquote>
-<h2 id="自定义排序例"><a href="#自定义排序例" class="headerlink" title="自定义排序例"></a>自定义排序例</h2><p>对杜甫的绝句进行排序（String实现了接口Comparable）<br><img src="https://img-blog.csdnimg.cn/91091655764945c48bc081f233b2e971.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/6e9931b7a26f4cd7961e7d95ba91b7be.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<p>按照最前面阿拉伯数字进行排序<br><img src="https://img-blog.csdnimg.cn/ac4d1d14bc364f13a70a70c04c447c2a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>当序号不是使用阿拉伯数字标识，将无法进行正确排序，由于String已实现Comparable接口，只是定义的排序规则不适应这次排序，此时需自定义比较器<br><img src="https://img-blog.csdnimg.cn/61701bc1c6b54db9b03f1b608b8d99b5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2H5Lmd77iP,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import java.util.*;</span><br><span class="line"></span><br><span class="line">public class ComparableDemo &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        List&lt;String&gt; l = new ArrayList&lt;&gt;();</span><br><span class="line">        l.add(&quot;贰.一行白鹭上青天&quot;);</span><br><span class="line">        l.add(&quot;壹.两个黄鹂鸣翠柳&quot;);</span><br><span class="line">        l.add(&quot;肆.门泊东吴万里船。&quot;);</span><br><span class="line">        l.add(&quot;叁. 窗含西岭千秋雪&quot;);</span><br><span class="line">        List&lt;String&gt; sizes = new ArrayList&lt;&gt;();</span><br><span class="line">        Collections.addAll(sizes,&quot;壹&quot;,&quot;贰&quot;,&quot;叁&quot;,&quot;肆&quot;);</span><br><span class="line">        System.out.println(l);</span><br><span class="line">        Collections.sort(l, new Comparator&lt;String&gt;() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public int compare(String o1, String o2) &#123;</span><br><span class="line">                        return sizes.indexOf(o1.substring(0, o1.indexOf(&quot;.&quot;)))</span><br><span class="line">                                - sizes.indexOf(o2.substring(0, o2.indexOf(&quot;.&quot;)));</span><br><span class="line">                        //o1.indexOf(&quot;.&quot;)：取“.”的下标</span><br><span class="line">                        //o1.substring(0,o1.indexOf(&quot;.&quot;)):取从下标0，，至“.”所在下标的前一位</span><br><span class="line">                        //确定符号标识的大小</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">        );</span><br><span class="line">        System.out.println(l);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/18/Collections%20%E5%B7%A5%E5%85%B7%E7%B1%BB/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
+
   
 
 
@@ -874,8 +432,8 @@ eg:SELECT math AS 数学成绩 FROM stu;
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
